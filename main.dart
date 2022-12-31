@@ -1,16 +1,17 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
-
+import 'package:awesome_snackbar_content/awesome_snackbar_content.dart';
 import 'package:bebekisim/data.dart';
+import 'package:bebekisim/detaySayfa.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'database.dart';
 
 void main() {
   runApp(const MyApp());
 }
 
 bool isSwitched = false;
-String firstChar = "i";
-String lastChar = "A";
+String firstChar = "";
+String lastChar = "";
 String secilenCinsiyet = "Unisex";
 String a = "";
 String b = "";
@@ -23,6 +24,8 @@ var cinsiyetler = [
   'Kiz',
   'Unisex',
 ];
+final List<String> uygunIsim = [];
+
 List<DropdownMenuItem<String>> get dropdownItems {
   List<DropdownMenuItem<String>> menuItems = [
     DropdownMenuItem(value: "Erkek", child: Text("Erkek")),
@@ -191,12 +194,10 @@ class _MyHomePageState extends State<MyHomePage> {
                                   borderRadius: BorderRadius.circular(12)),
                             ),
                             onPressed: () {
-                              isimBul(
-                                secilenCinsiyet,
-                                isSwitched,
-                                firstChar,
-                                lastChar,
-                              );
+                              isimBul(secilenCinsiyet, isSwitched, firstChar,
+                                  lastChar, context);
+                              String cem = "cem";
+                              debugPrint(cem.startsWith("k").toString());
                               setState(() {});
                             },
                             child: Text("Yarat"),
@@ -290,7 +291,11 @@ class _MyHomePageState extends State<MyHomePage> {
                                 shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(12)),
                               ),
-                              onPressed: () {},
+                              onPressed: () {
+                                Navigator.of(context).push(CupertinoPageRoute(
+                                    builder: (BuildContext ctx) =>
+                                        MyWidget(list: uygunIsim)));
+                              },
                               child: Text("Tamamını Gör"))
                         ],
                       ),
@@ -306,8 +311,14 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 }
 
-List<String> isimBul(cinsiyet, switchValue, String ilkHarf, String sonHarf) {
-  List<String> uygunIsim = [];
+List<String> isimBul(
+    cinsiyet, switchValue, String ilkHarf, String sonHarf, context) {
+  a = "";
+  d = "";
+  e = "";
+  f = "";
+  c = "";
+  b = "";
   if (cinsiyet == "Erkek" || cinsiyet == "Unisex") {
     for (var i = 0; i < 7792; i++) {
       if (erkekIsim[i].startsWith(ilkHarf.toUpperCase()) &&
@@ -342,17 +353,32 @@ List<String> isimBul(cinsiyet, switchValue, String ilkHarf, String sonHarf) {
     f = uygunIsim[3];
     c = uygunIsim[4];
     b = uygunIsim[5];
+  } else if (uygunIsim.length < 6) {
+    final snackBar = SnackBar(
+      elevation: 0,
+      behavior: SnackBarBehavior.floating,
+      backgroundColor: Colors.transparent,
+      content: AwesomeSnackbarContent(
+        title: 'Hay Aksi!',
+        message: 'Aradığınız kriterlerde yeterince isim bulamadık!',
+
+        /// change contentType to ContentType.success, ContentType.warning or ContentType.help for variants
+        contentType: ContentType.failure,
+      ),
+    );
+    ScaffoldMessenger.of(context)
+      ..hideCurrentSnackBar()
+      ..showSnackBar(snackBar);
   }
 
   return uygunIsim;
 }
 
 bool validateTurkcekarakter(String value) {
-  String cem = "Cem";
   List<String> kontrolSeti = ["Ğ", "ğ", "ç", "Ç", "ı", "İ", "Ü", "ü", "ö", "Ö"];
   int a = 0;
   for (var i = 0; i < kontrolSeti.length; i++) {
-    if (!cem.contains(kontrolSeti[i])) {
+    if (!value.contains(kontrolSeti[i])) {
       a = a + 1;
     }
   }
