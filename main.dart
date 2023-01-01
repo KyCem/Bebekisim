@@ -539,7 +539,7 @@ bool validateTurkcekarakter(String value) {
       a = a + 1;
     }
   }
-  if (a == 12) {
+  if (a == kontrolSeti.length) {
     return true;
   } else {
     return false;
