@@ -519,7 +519,20 @@ List<String> isimBul(
 }
 
 bool validateTurkcekarakter(String value) {
-  List<String> kontrolSeti = ["Ğ", "ğ", "ç", "Ç", "ı", "İ", "Ü", "ü", "ö", "Ö"];
+  List<String> kontrolSeti = [
+    "Ğ",
+    "ğ",
+    "ç",
+    "Ç",
+    "ı",
+    "İ",
+    "Ü",
+    "ü",
+    "ö",
+    "Ö",
+    "Ş",
+    "ş",
+  ];
   int a = 0;
   for (var i = 0; i < kontrolSeti.length; i++) {
     if (!value.contains(kontrolSeti[i])) {
