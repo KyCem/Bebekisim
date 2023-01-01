@@ -25,7 +25,8 @@ var cinsiyetler = [
   'Unisex',
 ];
 final List<String> uygunIsim = [];
-
+Color clr = Color(0xffE8D9C2);
+Color clr2 = Color(0xffa39789);
 List<DropdownMenuItem<String>> get dropdownItems {
   List<DropdownMenuItem<String>> menuItems = [
     DropdownMenuItem(value: "Erkek", child: Text("Erkek")),
@@ -43,9 +44,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Bebek İsim',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
+      theme: ThemeData(primarySwatch: Colors.blueGrey),
       home: const MyHomePage(title: 'Bebek isim yaratici'),
     );
   }
@@ -71,9 +70,12 @@ class _MyHomePageState extends State<MyHomePage> {
               mainAxisAlignment: MainAxisAlignment.center,
               // ignore: prefer_const_literals_to_create_immutables
               children: [
-                const Text(
-                  "İdeal Bebek İsminizi Bulalim ",
-                  style: TextStyle(fontSize: 16, fontFamily: "VesperLibre"),
+                Padding(
+                  padding: const EdgeInsets.only(top: 17),
+                  child: const Text(
+                    "İdeal Bebek İsminizi Bulalim ",
+                    style: TextStyle(fontSize: 21, fontFamily: "VesperLibre"),
+                  ),
                 ),
                 Padding(
                   padding: const EdgeInsets.only(top: 20, left: 20),
@@ -110,7 +112,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       Padding(
                         padding: const EdgeInsets.only(left: 0),
                         child: Switch(
-                          // activeColor: Colors.amber,
+                          activeColor: Color(0xff8f9e81),
                           //activeTrackColor: Colors.blue,
                           onChanged: (bool value) {
                             setState(() {
@@ -142,6 +144,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       left: 20,
                       right: MediaQuery.of(context).size.width / 30 * 23),
                   child: TextFormField(
+                    cursorColor: Color(0xff8f9e81),
                     maxLength: 1,
                     decoration: const InputDecoration(
                       hintText: 'İsmin ilk harfi',
@@ -170,6 +173,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       right: MediaQuery.of(context).size.width / 30 * 23),
                   child: TextFormField(
                     maxLength: 1,
+                    cursorColor: Color(0xff8f9e81),
                     decoration: const InputDecoration(
                       hintText: 'İsmin son harfi?',
                       labelText: 'Son harf',
@@ -184,11 +188,12 @@ class _MyHomePageState extends State<MyHomePage> {
                   children: [
                     Padding(
                       padding: EdgeInsets.only(
-                          left: MediaQuery.of(context).size.width / 200 * 102),
+                          left: MediaQuery.of(context).size.width / 200 * 124),
                       child: ButtonBar(
                         children: [
                           ElevatedButton(
                             style: ElevatedButton.styleFrom(
+                              backgroundColor: clr2,
                               fixedSize: Size(75, 42),
                               shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(12)),
@@ -210,7 +215,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 Padding(
                   padding: EdgeInsets.only(
                       bottom: 14,
-                      top: 10,
+                      top: 20,
                       right: MediaQuery.of(context).size.width / 60 * 9),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -218,26 +223,66 @@ class _MyHomePageState extends State<MyHomePage> {
                       Container(
                         height: 40,
                         width: MediaQuery.of(context).size.width * 2 / 8,
-                        child: Center(child: Text(a)),
                         decoration: BoxDecoration(
-                            color: Color(0xffa881af),
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.grey.withOpacity(0.7),
+                                spreadRadius: 2,
+                                blurRadius: 3,
+                                offset: Offset(
+                                    1, 2.5), // changes position of shadow
+                              ),
+                            ],
+                            color: clr,
+                            border: Border.all(width: 1.6),
                             borderRadius: BorderRadius.circular(12)),
+                        child: Center(
+                            child: Text(a,
+                                style: TextStyle(
+                                    fontFamily: "NotoSerif", fontSize: 14))),
                       ),
                       Container(
                         height: 40,
                         width: MediaQuery.of(context).size.width * 2 / 8,
-                        child: Center(child: Text(b)),
                         decoration: BoxDecoration(
-                            color: Color(0xffa881af),
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.grey.withOpacity(0.7),
+                                spreadRadius: 2,
+                                blurRadius: 3,
+                                offset: Offset(
+                                    1, 2.5), // changes position of shadow
+                              ),
+                            ],
+                            color: clr,
+                            border: Border.all(width: 1.6),
                             borderRadius: BorderRadius.circular(12)),
+                        child: Center(
+                            child: Text(b,
+                                style: TextStyle(
+                                    fontFamily: "NotoSerif", fontSize: 14))),
                       ),
                       Container(
                         height: 40,
                         width: MediaQuery.of(context).size.width * 2 / 8,
-                        child: Center(child: Text(c)),
                         decoration: BoxDecoration(
-                            color: Color(0xffa881af),
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.grey.withOpacity(0.7),
+                                spreadRadius: 2,
+                                blurRadius: 3,
+                                offset: Offset(
+                                    1, 2.5), // changes position of shadow
+                              ),
+                            ],
+                            color: clr,
+                            border: Border.all(width: 1.6),
                             borderRadius: BorderRadius.circular(12)),
+                        child: Center(
+                          child: Text(c,
+                              style: TextStyle(
+                                  fontFamily: "NotoSerif", fontSize: 14)),
+                        ),
                       ),
                     ],
                   ),
@@ -252,26 +297,68 @@ class _MyHomePageState extends State<MyHomePage> {
                       Container(
                         height: 40,
                         width: MediaQuery.of(context).size.width * 2 / 8,
-                        child: Center(child: Text(d)),
                         decoration: BoxDecoration(
-                            color: Color(0xffa881af),
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.grey.withOpacity(0.7),
+                                spreadRadius: 2,
+                                blurRadius: 3,
+                                offset: Offset(
+                                    1, 2.5), // changes position of shadow
+                              ),
+                            ],
+                            color: clr,
+                            border: Border.all(width: 1.6),
                             borderRadius: BorderRadius.circular(12)),
+                        child: Center(
+                            child: Text(d,
+                                style: TextStyle(
+                                    fontFamily: "NotoSerif", fontSize: 14))),
                       ),
                       Container(
                         height: 40,
                         width: MediaQuery.of(context).size.width * 2 / 8,
-                        child: Center(child: Text(e)),
                         decoration: BoxDecoration(
-                            color: Color(0xffa881af),
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.grey.withOpacity(0.7),
+                                spreadRadius: 2,
+                                blurRadius: 3,
+                                offset: Offset(
+                                    1, 2.5), // changes position of shadow
+                              ),
+                            ],
+                            color: clr,
+                            border: Border.all(width: 1.6),
                             borderRadius: BorderRadius.circular(12)),
+                        child: Center(
+                          child: Text(
+                            e,
+                            style: TextStyle(
+                                fontFamily: "NotoSerif", fontSize: 14),
+                          ),
+                        ),
                       ),
                       Container(
                         height: 40,
                         width: MediaQuery.of(context).size.width * 2 / 8,
-                        child: Center(child: Text(f)),
                         decoration: BoxDecoration(
-                            color: Color(0xffa881af),
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.grey.withOpacity(0.7),
+                                spreadRadius: 2,
+                                blurRadius: 3,
+                                offset: Offset(
+                                    1, 2.5), // changes position of shadow
+                              ),
+                            ],
+                            color: clr,
+                            border: Border.all(width: 1.6),
                             borderRadius: BorderRadius.circular(12)),
+                        child: Center(
+                            child: Text(f,
+                                style: TextStyle(
+                                    fontFamily: "NotoSerif", fontSize: 14))),
                       ),
                     ],
                   ),
@@ -281,12 +368,13 @@ class _MyHomePageState extends State<MyHomePage> {
                   children: [
                     Padding(
                       padding: EdgeInsets.only(
-                          top: 4,
-                          left: MediaQuery.of(context).size.width / 18 * 7),
+                          top: 10,
+                          left: MediaQuery.of(context).size.width / 100 * 48),
                       child: ButtonBar(
                         children: [
                           ElevatedButton(
                               style: ElevatedButton.styleFrom(
+                                backgroundColor: clr2,
                                 fixedSize: Size(140, 40),
                                 shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(12)),
@@ -313,34 +401,90 @@ class _MyHomePageState extends State<MyHomePage> {
 
 List<String> isimBul(
     cinsiyet, switchValue, String ilkHarf, String sonHarf, context) {
+  uygunIsim.clear();
   a = "";
   d = "";
   e = "";
   f = "";
   c = "";
   b = "";
+
   if (cinsiyet == "Erkek" || cinsiyet == "Unisex") {
     for (var i = 0; i < 7792; i++) {
-      if (erkekIsim[i].startsWith(ilkHarf.toUpperCase()) &&
-          erkekIsim[i].endsWith(sonHarf.toLowerCase())) {
+      if (ilkHarf == "" && sonHarf != "") {
+        if (erkekIsim[i].endsWith(sonHarf.toLowerCase())) {
+          if (switchValue == true && validateTurkcekarakter(erkekIsim[i])) {
+            uygunIsim.add(erkekIsim[i]);
+          }
+          if (switchValue == false) {
+            uygunIsim.add(erkekIsim[i]);
+          }
+        }
+      } else if (sonHarf == "" && ilkHarf != "") {
+        if (erkekIsim[i].startsWith(ilkHarf.toUpperCase())) {
+          if (switchValue == true && validateTurkcekarakter(erkekIsim[i])) {
+            uygunIsim.add(erkekIsim[i]);
+          }
+          if (switchValue == false) {
+            uygunIsim.add(erkekIsim[i]);
+          }
+        }
+      } else if (sonHarf == "" && ilkHarf == "") {
         if (switchValue == true && validateTurkcekarakter(erkekIsim[i])) {
           uygunIsim.add(erkekIsim[i]);
         }
         if (switchValue == false) {
           uygunIsim.add(erkekIsim[i]);
         }
+      } else {
+        if (erkekIsim[i].startsWith(ilkHarf.toUpperCase()) &&
+            erkekIsim[i].endsWith(sonHarf.toLowerCase())) {
+          if (switchValue == true && validateTurkcekarakter(erkekIsim[i])) {
+            uygunIsim.add(erkekIsim[i]);
+          }
+          if (switchValue == false) {
+            uygunIsim.add(erkekIsim[i]);
+          }
+        }
       }
     }
   }
   if (cinsiyet == "Kiz" || cinsiyet == "Unisex") {
     for (var i = 0; i < 5340; i++) {
-      if (kizIsim[i].startsWith(ilkHarf.toUpperCase()) &&
-          kizIsim[i].endsWith(sonHarf.toLowerCase())) {
+      if (ilkHarf == "" && sonHarf != "") {
+        if (kizIsim[i].endsWith(sonHarf.toLowerCase())) {
+          if (switchValue == true && validateTurkcekarakter(kizIsim[i])) {
+            uygunIsim.add(kizIsim[i]);
+          }
+          if (switchValue == false) {
+            uygunIsim.add(kizIsim[i]);
+          }
+        }
+      } else if (sonHarf == "" && ilkHarf != "") {
+        if (kizIsim[i].startsWith(ilkHarf.toUpperCase())) {
+          if (switchValue == true && validateTurkcekarakter(kizIsim[i])) {
+            uygunIsim.add(kizIsim[i]);
+          }
+          if (switchValue == false) {
+            uygunIsim.add(kizIsim[i]);
+          }
+        }
+      } else if (sonHarf == "" && ilkHarf == "") {
         if (switchValue == true && validateTurkcekarakter(kizIsim[i])) {
           uygunIsim.add(kizIsim[i]);
         }
         if (switchValue == false) {
           uygunIsim.add(kizIsim[i]);
+        }
+      } else {
+        if (kizIsim[i].startsWith(ilkHarf.toUpperCase()) &&
+            kizIsim[i].endsWith(sonHarf.toLowerCase())) {
+          if (switchValue == true && validateTurkcekarakter(kizIsim[i])) {
+            uygunIsim.add(kizIsim[i]);
+          }
+          if (switchValue == false) {
+            uygunIsim.add(kizIsim[i]);
+          }
         }
       }
     }
