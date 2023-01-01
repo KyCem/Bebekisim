@@ -413,36 +413,36 @@ List<String> isimBul(
     for (var i = 0; i < 7792; i++) {
       if (ilkHarf == "" && sonHarf != "") {
         if (erkekIsim[i].endsWith(sonHarf.toLowerCase())) {
-          if (switchValue == true && validateTurkcekarakter(erkekIsim[i])) {
+          if (switchValue == false && validateTurkcekarakter(erkekIsim[i])) {
             uygunIsim.add(erkekIsim[i]);
           }
-          if (switchValue == false) {
+          if (switchValue == true) {
             uygunIsim.add(erkekIsim[i]);
           }
         }
       } else if (sonHarf == "" && ilkHarf != "") {
         if (erkekIsim[i].startsWith(ilkHarf.toUpperCase())) {
-          if (switchValue == true && validateTurkcekarakter(erkekIsim[i])) {
+          if (switchValue == false && validateTurkcekarakter(erkekIsim[i])) {
             uygunIsim.add(erkekIsim[i]);
           }
-          if (switchValue == false) {
+          if (switchValue == true) {
             uygunIsim.add(erkekIsim[i]);
           }
         }
       } else if (sonHarf == "" && ilkHarf == "") {
-        if (switchValue == true && validateTurkcekarakter(erkekIsim[i])) {
+        if (switchValue == false && validateTurkcekarakter(erkekIsim[i])) {
           uygunIsim.add(erkekIsim[i]);
         }
-        if (switchValue == false) {
+        if (switchValue == true) {
           uygunIsim.add(erkekIsim[i]);
         }
       } else {
         if (erkekIsim[i].startsWith(ilkHarf.toUpperCase()) &&
             erkekIsim[i].endsWith(sonHarf.toLowerCase())) {
-          if (switchValue == true && validateTurkcekarakter(erkekIsim[i])) {
+          if (switchValue == false && validateTurkcekarakter(erkekIsim[i])) {
             uygunIsim.add(erkekIsim[i]);
           }
-          if (switchValue == false) {
+          if (switchValue == true) {
             uygunIsim.add(erkekIsim[i]);
           }
         }
@@ -453,36 +453,36 @@ List<String> isimBul(
     for (var i = 0; i < 5340; i++) {
       if (ilkHarf == "" && sonHarf != "") {
         if (kizIsim[i].endsWith(sonHarf.toLowerCase())) {
-          if (switchValue == true && validateTurkcekarakter(kizIsim[i])) {
+          if (switchValue == false && validateTurkcekarakter(kizIsim[i])) {
             uygunIsim.add(kizIsim[i]);
           }
-          if (switchValue == false) {
+          if (switchValue == true) {
             uygunIsim.add(kizIsim[i]);
           }
         }
       } else if (sonHarf == "" && ilkHarf != "") {
         if (kizIsim[i].startsWith(ilkHarf.toUpperCase())) {
-          if (switchValue == true && validateTurkcekarakter(kizIsim[i])) {
+          if (switchValue == false && validateTurkcekarakter(kizIsim[i])) {
             uygunIsim.add(kizIsim[i]);
           }
-          if (switchValue == false) {
+          if (switchValue == true) {
             uygunIsim.add(kizIsim[i]);
           }
         }
       } else if (sonHarf == "" && ilkHarf == "") {
-        if (switchValue == true && validateTurkcekarakter(kizIsim[i])) {
+        if (switchValue == false && validateTurkcekarakter(kizIsim[i])) {
           uygunIsim.add(kizIsim[i]);
         }
-        if (switchValue == false) {
+        if (switchValue == true) {
           uygunIsim.add(kizIsim[i]);
         }
       } else {
         if (kizIsim[i].startsWith(ilkHarf.toUpperCase()) &&
             kizIsim[i].endsWith(sonHarf.toLowerCase())) {
-          if (switchValue == true && validateTurkcekarakter(kizIsim[i])) {
+          if (switchValue == false && validateTurkcekarakter(kizIsim[i])) {
             uygunIsim.add(kizIsim[i]);
           }
-          if (switchValue == false) {
+          if (switchValue == true) {
             uygunIsim.add(kizIsim[i]);
           }
         }
