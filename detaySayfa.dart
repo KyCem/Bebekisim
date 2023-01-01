@@ -12,13 +12,20 @@ class MyWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        backgroundColor: Color(0xffa88e7a),
+        title: Text("Size uygun tüm bebek isimleri:",
+            style: TextStyle(fontFamily: "NotoSerif", fontSize: 18)),
+      ),
       body: ListView.builder(
           itemCount: list.length,
           itemBuilder: (BuildContext ctx, int index) {
             return Padding(
-              padding: const EdgeInsets.only(bottom: 2),
+              padding: const EdgeInsets.only(bottom: 2, top: 4),
               child: Container(
+                decoration: BoxDecoration(
+                  border: Border(bottom: BorderSide(width: 0.8)),
+                ),
                 height: 40,
                 width: 75,
                 child: Center(
